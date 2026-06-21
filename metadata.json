@@ -1,0 +1,6 @@
+{
+  "name": "Movie Recap Studio",
+  "description": "Full-stack movie recap editor, AI script generator with Burmese subtitles, transitions timeline, real-time collaboration, and community review suite.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
