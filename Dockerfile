@@ -3,9 +3,9 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package.json package-lock.json* ./
-RUN npm ci
+# Copy package files and install dependencies (use npm install to resolve platform-native binaries on Linux)
+COPY package.json ./
+RUN npm install
 
 # Copy source code
 COPY . .
@@ -19,8 +19,8 @@ FROM node:20-alpine AS production
 WORKDIR /app
 
 # Copy package files and install production dependencies only
-COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev
+COPY package.json ./
+RUN npm install --omit=dev
 
 # Copy built output from builder
 COPY --from=builder /app/dist ./dist
